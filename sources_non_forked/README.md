@@ -1,100 +1,64 @@
-set nu
+**neocomplcache**
+=================
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket expanding
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- 
-inoremap ( <c-r>=OpenPair('(')<CR>
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap { <c-r>=OpenPair('{')<CR>
-inoremap } <c-r>=ClosePair('}')<CR>
-inoremap [ <c-r>=OpenPair('[')<CR>
-inoremap ] <c-r>=ClosePair(']')<CR>
-" just for xml document, but need not for now.
-"inoremap < <c-r>=OpenPair('<')<CR>
-"inoremap > <c-r>=ClosePair('>')<CR>
-function! OpenPair(char)
-    let PAIRs = {
-                \ '{' : '}',
-                \ '[' : ']',
-                \ '(' : ')',
-                \ '<' : '>'
-                \}
-    if line('$')>2000
-        let line = getline('.')
- 
-        let txt = strpart(line, col('.')-1)
-    else
-        let lines = getline(1,line('$'))
-        let line=""
-        for str in lines
-            let line = line . str . "\n"
-        endfor
- 
-        let blines = getline(line('.')-1, line("$"))
-        let txt = strpart(getline("."), col('.')-1)
-        for str in blines
-            let txt = txt . str . "\n"
-        endfor
-    endif
-    let oL = len(split(line, a:char, 1))-1
-    let cL = len(split(line, PAIRs[a:char], 1))-1
- 
-    let ol = len(split(txt, a:char, 1))-1
-    let cl = len(split(txt, PAIRs[a:char], 1))-1
- 
-    if oL>=cL || (oL<cL && ol>=cl)
-        return a:char . PAIRs[a:char] . "\<Left>"
-    else
-        return a:char
-    endif
-endfunction
-function! ClosePair(char)
-    if getline('.')[col('.')-1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endf
- 
-inoremap ' <c-r>=CompleteQuote("'")<CR>
-inoremap " <c-r>=CompleteQuote('"')<CR>
-function! CompleteQuote(quote)
-    let ql = len(split(getline('.'), a:quote, 1))-1
-    let slen = len(split(strpart(getline("."), 0, col(".")-1), a:quote, 1))-1
-    let elen = len(split(strpart(getline("."), col(".")-1), a:quote, 1))-1
-    let isBefreQuote = getline('.')[col('.') - 1] == a:quote
- 
-    if '"'==a:quote && "vim"==&ft && 0==match(strpart(getline('.'), 0, col('.')-1), "^[\t ]*$")
-        " for vim comment.
-        return a:quote
-"    elseif "'"==a:quote && 0==match(getline('.')[col('.')-2], "[a-zA-Z0-9]")
-"        " for Name's Blog.
-"        return a:quote
-    elseif (ql%2)==1
-        " a:quote length is odd.
-        return a:quote
-    elseif ((slen%2)==1 && (elen%2)==1 && !isBefreQuote) || ((slen%2)==0 && (elen%2)==0)
-        return a:quote . a:quote . "\<Left>"
-    elseif isBefreQuote
-        return "\<Right>"
-    else
-        return a:quote . a:quote . "\<Left>"
-    endif
-endfunction
- 
- 
-inoremap <CR> <c-r>=AutoIndentAfterBrace()<CR>
- 
-function! AutoIndentAfterBrace()
-    let leftchar = getline('.')[col('.')-2]
-    if '{'==leftchar || '('==leftchar
-        return "\<CR>\<CR>\<UP>\<Tab> "
-    else 
-        return "\<CR>"
-    endif
-endfunction
- 
+Description
+-----------
+
+neocomplcache is the abbreviation of "neo-completion with cache". It
+provides keyword completion system by maintaining a cache of keywords in the
+current buffer. neocomplcache could be customized easily and has a lot more
+features than the Vim's standard completion feature.
+
+If you use Vim 7.3.885 or above with if\_lua feature, you should use
+neocomplete.  It is faster than neocomplcache.
+
+https://github.com/Shougo/neocomplete.vim
+
+Installation
+============
+
+* Extract the file and put files in your Vim directory
+   (usually ~/.vim/ or Program Files/Vim/vimfiles on Windows).
+* Execute `|:NeoComplCacheEnable|` command or
+`let g:neocomplcache_enable_at_startup = 1`
+in your `.vimrc`. Not in `.gvimrc`(`_gvimrc`)!
+
+Caution
+-------
+
+Because all variable names were changed in neocomplcache Ver.5, it is not
+backwards compatible. If you want to upgrade, you should use the following
+script from Mr.thinca.
+
+http://gist.github.com/422503
+
+Snippets feature(snippets\_complete source) was split from Ver.7.
+If you used it, please install neosnippet source manually.
+
+https://github.com/Shougo/neosnippet
+
+Screen shots
+============
+
+Original filename completion.
+-----------
+![Original filename completion.](http://1.bp.blogspot.com/_ci2yBnqzJgM/TD1O5_bOQ2I/AAAAAAAAADE/vHf9Xg_mrTI/s1600/filename_complete.png)
+
+Omni completion.
+----------------
+![Omni completion.](http://2.bp.blogspot.com/_ci2yBnqzJgM/TD1PTolkTBI/AAAAAAAAADU/knJ3eniuHWI/s1600/omni_complete.png)
+
+Completion with vimshell(http://github.com/Shougo/vimshell).
+------------------------------------------------------------
+![Completion with vimshell(http://github.com/Shougo/vimshell).](http://1.bp.blogspot.com/_ci2yBnqzJgM/TD1PLfdQrwI/AAAAAAAAADM/2pSFRTHwYOY/s1600/neocomplcache_with_vimshell.png)
+
+Vim completion
+------------------------------------------------------------
+![Vim completion.](http://1.bp.blogspot.com/_ci2yBnqzJgM/TD1PfKTlwnI/AAAAAAAAADs/nOGWTRLuae8/s1600/vim_complete.png)
+
+Setting examples
+
+```vim
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -131,9 +95,9 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function()
-  "return neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . "\<CR>"
   " For no inserting <CR> key.
   "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
@@ -184,3 +148,4 @@ let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplcache_force_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+```
