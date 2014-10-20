@@ -1,4 +1,7 @@
 set nu
+nmap J j
+nmap K k
+nmap W w
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket expanding
