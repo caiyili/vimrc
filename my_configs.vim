@@ -3,6 +3,8 @@ nmap J j
 nmap K k
 nmap W w
 
+nnoremap <leader>tl :Tlist<CR>
+let Tlist_Use_Right_Window=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket expanding
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
