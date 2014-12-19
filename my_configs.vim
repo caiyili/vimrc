@@ -6,6 +6,7 @@ nmap W w
 set foldmethod=marker
 set foldlevel=10
 set foldmarker={,}
+set nowrap
 
 nnoremap <leader>tl :Tlist<CR>
 let Tlist_Use_Right_Window=1
