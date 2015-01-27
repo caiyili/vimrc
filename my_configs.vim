@@ -6,6 +6,7 @@ nmap W w
 set foldmethod=marker
 set foldlevel=10
 set foldmarker={,}
+set nowrap
 
 vnoremap <leader>a :EasyAlign=<CR>
 
