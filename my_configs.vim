@@ -8,6 +8,10 @@ set foldlevel=10
 set foldmarker={,}
 set nowrap
 
+" php的语法检查
+"let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_checkers = ['php']
+
 vnoremap <leader>a :EasyAlign=<CR>
 
 nnoremap <leader>tl :Tlist<CR>
