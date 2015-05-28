@@ -4,6 +4,7 @@ nmap K k
 nmap W w
 
 set foldmethod=marker
+set foldcolumn=0
 set foldlevel=10
 set foldmarker={,}
 set nowrap
