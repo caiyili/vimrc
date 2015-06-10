@@ -19,6 +19,11 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
 vnoremap <leader>a :EasyAlign=<CR>
 
 nnoremap <leader>tl :Tlist<CR>
