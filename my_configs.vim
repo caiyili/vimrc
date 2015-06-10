@@ -1,16 +1,22 @@
 set nu
 nmap J j
 nmap K k
-nmap W w
+nmap \ ,
 
 set foldmethod=marker
 set foldlevel=10
+set foldcolumn=0
 set foldmarker={,}
 set nowrap
 
 " php的语法检查
 "let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_php_checkers = ['php']
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
 
 vnoremap <leader>a :EasyAlign=<CR>
 
