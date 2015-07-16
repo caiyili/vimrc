@@ -121,7 +121,7 @@ inoremap <CR> <c-r>=AutoIndentAfterBrace()<CR>
 function! AutoIndentAfterBrace()
     let leftchar = getline('.')[col('.')-2]
     if '{'==leftchar || '('==leftchar
-        return "\<CR>\<CR>\<UP>\<Tab> "
+        return "\<CR>\<CR>\<UP>\<Tab>"
     else 
         return "\<CR>"
     endif
@@ -168,7 +168,7 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
   "return neocomplcache#smart_close_popup() . "\<CR>"
   " For no inserting <CR> key.
   "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-endfunction
+"endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
