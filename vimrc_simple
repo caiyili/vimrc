@@ -1,0 +1,33 @@
+syn on
+set number
+
+" 格式相关
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set smartindent
+
+set showcmd "在右下角显示输入的命令
+set hlsearch "高亮显示当前搜索
+set incsearch "实时搜索
+
+" set path
+set path+=**
+
+" 状态栏
+set laststatus=2
+
+" 命令行菜单 模糊匹配
+set wildmenu
+set wildmode=full:list
+set wildchar=<Tab>
+
+" 自动补全
+autocmd FileType .php set omnifunc=phpcomplete#CompletePHP
+
+" 编码
+set fileencodings=utf8,gbk
+
+let g:mapleader=","
+nmap <leader>es :tabnew ~/.vimrc<cr>
+nmap <leader>ss :source ~/.vimrc<cr>
