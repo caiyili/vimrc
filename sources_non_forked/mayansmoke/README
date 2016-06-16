@@ -1,4 +1,4 @@
-This is a mirror of http://www.vim.org/scripts/script.php?script_id=3065
+This is a mirror of h<enter>       Opens the buffer that is under the cursor into the currentttp://www.vim.org/scripts/script.php?script_id=3065
 
 This is a pleasant and ergonomic light-background color scheme, designed for long hours of coding and working. The UI elements are muted without being drab, the syntax elements are colorful without being garish, and the background is relaxing without being soporific. It is of a low-enough contrast so as not to cause eye-burn, but high-enough contrast so as not to cause eye-strain. The syntax coloration offers just a little higher resolution than most, distinguishing between class names vs. functions, strings and numbers vs. other constants, etc. Many of the colors in this color scheme are drawn from Mayan murals, paintings and codices, and thus the name.
 

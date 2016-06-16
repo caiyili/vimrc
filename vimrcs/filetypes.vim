@@ -22,7 +22,7 @@ au FileType python map <buffer> <leader>D ?def
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
-au FileType javascript call JavaScriptFold()
+"au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au FileType javascript setl nocindent
 
@@ -52,3 +52,17 @@ function! CoffeeScriptFold()
     setl foldlevelstart=1
 endfunction
 au FileType coffee call CoffeeScriptFold()
+
+"""""""""""""""""""""""""""""
+" => sql
+"""""""""""""""""""""""""""""
+au FileType sql call SqlSet()
+
+function! SqlSet()
+    setl shiftwidth=2
+endfunction
+
+""""""""""""""""""""""""""""""
+" => html
+""""""""""""""""""""""""""""""
+au FileType html setl shiftwidth=2

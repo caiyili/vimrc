@@ -116,7 +116,7 @@ function! CompleteQuote(quote)
 endfunction
  
  
-inoremap <CR> <c-r>=AutoIndentAfterBrace()<CR>
+"inoremap <CR> <c-r>=AutoIndentAfterBrace()<CR>
  
 function! AutoIndentAfterBrace()
     let leftchar = getline('.')[col('.')-2]
