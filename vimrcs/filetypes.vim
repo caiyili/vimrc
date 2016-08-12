@@ -57,10 +57,10 @@ au FileType coffee call CoffeeScriptFold()
 au FileType sql call SqlSet()
 
 function! SqlSet()
-    setl shiftwidth=2
+    setl shiftwidth=4
 endfunction
 
 """"""""""""""""""""""""""""""
 " => html
 """"""""""""""""""""""""""""""
-au FileType html setl shiftwidth=2
+au FileType html setl shiftwidth=4
