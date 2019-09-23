@@ -3,6 +3,8 @@ nmap J j
 nmap K k
 nmap \ ,
 
+set tags+=~/.local/share/phalcon-ctags/tags
+
 set foldmethod=marker
 set foldcolumn=0
 set foldlevel=10
@@ -17,6 +19,7 @@ set previewheight=1
 " php的语法检查
 "let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_php_checkers = ['php']
+let g:syntastic_php_php_exec="php7"
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
